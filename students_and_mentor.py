@@ -22,7 +22,7 @@ class Student:
             average += sum(value) / len(value)
         return(round(average,2))
 
-    def compare(self, other):
+    def __lt__(self, other):
         average_grades_self = self._average_grade()
         average_grades_other = other._average_grade()
         if average_grades_self > average_grades_other:
@@ -60,7 +60,7 @@ class Lecturer(Mentor):
             average += sum(value) / len(value)
         return(round(average,2))
 
-    def compare(self, other):
+    def __lt__(self, other):
         average_grades_self = self._average_grade()
         average_grades_other = other._average_grade()
         if average_grades_self > average_grades_other:
@@ -124,7 +124,7 @@ first_reviewer.rate_hw(second_student, 'Python', 5)
 
 print(first_student);
 print(second_student)
-print(first_student.compare(second_student))
+print(first_student < second_student)
 print(calc_average_grades_students_course([first_student, second_student], 'Python'))
 
 print(first_reviewer)
@@ -147,6 +147,6 @@ first_student.rate_lw(second_lecturer, 'Python', 4)
 print(first_lecturer)
 print(second_lecturer)
 
-print(first_lecturer.compare(second_lecturer))
+print(second_lecturer < first_lecturer)
 
 print(calc_average_grades_lectors_course([first_lecturer, second_lecturer], 'Python'))
